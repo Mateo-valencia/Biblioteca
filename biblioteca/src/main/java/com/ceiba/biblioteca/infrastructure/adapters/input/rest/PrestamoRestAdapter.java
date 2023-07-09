@@ -3,7 +3,7 @@ package com.ceiba.biblioteca.infrastructure.adapters.input.rest;
 import com.ceiba.biblioteca.application.ports.input.ConsultarPrestamoUseCase;
 import com.ceiba.biblioteca.application.ports.input.CrearPrestamoUseCase;
 import com.ceiba.biblioteca.domain.model.Prestamo;
-import com.ceiba.biblioteca.infrastructure.adapters.input.rest.dto.PrestamoConverter;
+import com.ceiba.biblioteca.infrastructure.adapters.input.rest.mapper.PrestamoMapper;
 import com.ceiba.biblioteca.infrastructure.adapters.input.rest.dto.PrestamoDTO;
 import com.ceiba.biblioteca.infrastructure.adapters.input.rest.dto.RespuestaConsultarPrestamoDTO;
 import com.ceiba.biblioteca.infrastructure.adapters.input.rest.dto.RespuestaPrestamoDTO;
@@ -23,14 +23,14 @@ public class PrestamoRestAdapter {
     public RespuestaConsultarPrestamoDTO consultarPrestamo(@PathVariable Integer id){
         Prestamo prestamo = consultarPrestamoUseCase.consultarPrestamo(id);
 
-        return PrestamoConverter.crearRespuestaConsulta(prestamo);
+        return PrestamoMapper.crearRespuestaConsulta(prestamo);
     }
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public RespuestaPrestamoDTO crearPrestamo(@RequestBody PrestamoDTO prestamoDTO){
-        Prestamo prestamo = crearPrestamoUseCase.crearPrestamo(PrestamoConverter.crearPrestamo(prestamoDTO));
+        Prestamo prestamo = crearPrestamoUseCase.crearPrestamo(PrestamoMapper.crearPrestamo(prestamoDTO));
 
-        return PrestamoConverter.crearRespuestaCreacion(prestamo);
+        return PrestamoMapper.crearRespuestaCreacion(prestamo);
     }
 
 }

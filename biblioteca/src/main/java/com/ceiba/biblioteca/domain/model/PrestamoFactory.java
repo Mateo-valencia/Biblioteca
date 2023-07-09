@@ -16,7 +16,7 @@ public class PrestamoFactory {
                 .build();
     }
 
-    private static Date calcularFechaMaximaDevolucion(int dias){
+    public static Date calcularFechaMaximaDevolucion(int dias){
         int contadorDias = 0;
         LocalDate fechaCalculada = LocalDate.now();
 

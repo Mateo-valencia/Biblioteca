@@ -1,13 +1,16 @@
-package com.ceiba.biblioteca.infrastructure.adapters.input.rest.dto;
+package com.ceiba.biblioteca.infrastructure.adapters.input.rest.mapper;
 
 import com.ceiba.biblioteca.domain.model.Prestamo;
+import com.ceiba.biblioteca.infrastructure.adapters.input.rest.dto.PrestamoDTO;
+import com.ceiba.biblioteca.infrastructure.adapters.input.rest.dto.RespuestaConsultarPrestamoDTO;
+import com.ceiba.biblioteca.infrastructure.adapters.input.rest.dto.RespuestaPrestamoDTO;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
-public class PrestamoConverter {
+public class PrestamoMapper {
 
-    private PrestamoConverter() {
+    private PrestamoMapper() {
     }
 
     public static Prestamo crearPrestamo(PrestamoDTO prestamoDTO){
