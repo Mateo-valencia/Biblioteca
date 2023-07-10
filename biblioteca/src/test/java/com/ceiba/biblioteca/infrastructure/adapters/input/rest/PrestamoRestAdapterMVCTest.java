@@ -43,7 +43,7 @@ public class PrestamoRestAdapterMVCTest {
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content("{\n" +
                                         "    \"isbn\": \"1232425\",\n" +
-                                        "    \"identificacionUsuario\": \"1036683384\",\n" +
+                                        "    \"identificacionUsuario\": \"1036683388\",\n" +
                                         "    \"tipoUsuario\": 3\n" +
                                         "}")
                 )
@@ -54,12 +54,12 @@ public class PrestamoRestAdapterMVCTest {
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content("{\n" +
                                         "    \"isbn\": \"1232425\",\n" +
-                                        "    \"identificacionUsuario\": \"1036683384\",\n" +
+                                        "    \"identificacionUsuario\": \"1036683388\",\n" +
                                         "    \"tipoUsuario\": 3\n" +
                                         "}")
                 )
                 .andExpect(MockMvcResultMatchers.status().isBadRequest())
-                .andExpect(MockMvcResultMatchers.jsonPath("$.mensaje").value("El usuario con identificación 1036683384 ya tiene un libro prestado por lo cual no se le puede realizar otro préstamo"));
+                .andExpect(MockMvcResultMatchers.jsonPath("$.mensaje").value("El usuario con identificación 1036683388 ya tiene un libro prestado por lo cual no se le puede realizar otro préstamo"));
     }
 
     @Test
@@ -80,7 +80,7 @@ public class PrestamoRestAdapterMVCTest {
 
     @Test
     public void validarPrestamoNoEncontrado() throws Exception {
-            mockMvc.perform(MockMvcRequestBuilders.get("/prestamo/1").contentType(MediaType.APPLICATION_JSON))
+            mockMvc.perform(MockMvcRequestBuilders.get("/prestamo/788787").contentType(MediaType.APPLICATION_JSON))
             .andExpect(MockMvcResultMatchers.status().isBadRequest())
             .andExpect(MockMvcResultMatchers.jsonPath("$.mensaje").value("Prestamo No encontrado"));
     }
