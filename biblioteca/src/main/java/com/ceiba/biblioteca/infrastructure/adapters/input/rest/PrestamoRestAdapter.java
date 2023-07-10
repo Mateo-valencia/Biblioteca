@@ -11,6 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/prestamo")
 @RequiredArgsConstructor
@@ -27,7 +29,7 @@ public class PrestamoRestAdapter {
     }
 
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public RespuestaPrestamoDTO crearPrestamo(@RequestBody PrestamoDTO prestamoDTO){
+    public RespuestaPrestamoDTO crearPrestamo(@Valid @RequestBody PrestamoDTO prestamoDTO){
         Prestamo prestamo = crearPrestamoUseCase.crearPrestamo(PrestamoMapper.crearPrestamo(prestamoDTO));
 
         return PrestamoMapper.crearRespuestaCreacion(prestamo);
